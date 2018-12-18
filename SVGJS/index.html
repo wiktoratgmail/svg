@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+	<title>Svg</title>
+	<meta charset="utf-8">
+	<script src="svg.js"></script>
+	<script src="svg.panzoom.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="drawing"></div>
+	<script type="text/javascript">
+
+		var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+		var canvas = SVG('drawing').size(w, h).panZoom({zoomMin: 0.5, zoomMax: 20});
+		
+		canvas.viewbox(0,0,w,h);
+
+	    var group = canvas.group();
+		 
+
+	    var rectx = 200, recty = 100;
+
+			rect = canvas.rect(rectx, recty);
+			 
+			rect.stroke({width:1, color: '#fff'});
+
+			
+
+		group.add(rect);
+
+		rect.click(function() {
+  		canvas.zoom(1);
+		})
+	
+		var text = canvas.text('This is just the start. ');
+
+		var text = draw.text(function(add) {
+		  add.tspan('We go ')
+		  add.tspan('up').fill('#f09').dy(-40)
+		  add.tspan(', then we go down, then up again').dy(40)
+		});
+
+		text.font({
+				  family:   'Arial'
+				, size:     12
+			//	, anchor:   'middle'
+				, leading:  '1.5em'
+				, fill: '#fff'
+				})
+		
+		
+
+		group.add(text);
+		
+		text.cx(rectx/2).cy(recty/2);
+
+ 		group.cx(w/2).cy(h/2); 
+
+
+	</script>
+</body>
+</html>
