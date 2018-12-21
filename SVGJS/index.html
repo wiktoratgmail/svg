@@ -69,14 +69,19 @@
 	
 
 
-canvas.on('zoom', function(ev) {
+canvas.on('panStart', function(ev) {
 
-	var  y = Object.values(rect.rbox())[0];
-	var  x = Object.values(rect.rbox())[1];
+	var  cx = Object.values(rect.rbox())[0];
+	var  cy = Object.values(rect.rbox())[1];
     var  x = Object.values(rect.rbox())[2];
 
-    console.log( x,y );
-    console.log(rect.rbox());
+ 
+text.text('test' + cx.toString());
+
+
+ 
+  console.log( cx,cy );
+   // console.log(rect.rbox());
    });
 
 		
